@@ -22,5 +22,3 @@ if not os.path.exists('./settings.json'):
     initializeJSON()
 else:
     initializeVars()
-
-print(password)
