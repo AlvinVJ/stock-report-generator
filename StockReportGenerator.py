@@ -17,4 +17,5 @@ def initializeJSON():
     with open('./settings.json', 'w') as outfile:
         json.dump(data, outfile)
 
+
 initializeVars()
