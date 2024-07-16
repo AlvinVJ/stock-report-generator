@@ -5,20 +5,18 @@ password = ""
 
 def initializeVars():
     global password
+    if not os.path.exists('./settings.json'):
+        initializeJSON()
     with open("./settings.json", 'r') as f:
         data = json.load(f)
         password = data['password']
 
 def initializeJSON():
-    data = {
-        "mysqlPassword" : "" 
-    }
+    data = {}
     data['password'] = input("\nEnter mysql password:\t")
     with open('./settings.json', 'w') as outfile:
         json.dump(data, outfile)
 
 
-if not os.path.exists('./settings.json'):
-    initializeJSON()
-else:
-    initializeVars()
+
+initializeVars()
