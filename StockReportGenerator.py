@@ -95,6 +95,7 @@ def downloadRawData(arrayOfDates):
         BseDeliFileName="SCBSEALL"+date[2]+date[1]+".zip"
         filenames = (NseBhavFileName, BseBhavFileName, NseDeliFileName, BseDeliFileName)
         urls = formatURL(date)
+        types = ['nse_bhav', 'bse_bhav', 'nse_deli', 'bse_deli']
 
         #downloading data
         for i in range(4):
@@ -108,7 +109,7 @@ def downloadRawData(arrayOfDates):
                 with open(f"RawData/{filename}",'wb') as f:
                     f.write(response.content)
             elif response.status_code==404:
-                print("no data for " + '-'.join(date))
+                print("no data for " + '-'.join(date) + "  "+day['weekday'] + " " + {types[i]})
             else:
                 print(response.status_code)
 
